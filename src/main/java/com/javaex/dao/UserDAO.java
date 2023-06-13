@@ -24,4 +24,10 @@ public class UserDAO {
 	public UserVO getIdCheck(String id) {
 		return sqlsession.selectOne("user.idCheck", id);
 	}
+	
+	public UserVO getLoginUser(UserVO vo) {
+		System.out.println("UserDAO.getLoginUser");
+		System.out.println(vo);
+		return sqlsession.selectOne("user.loginUser", vo);
+	}
 }

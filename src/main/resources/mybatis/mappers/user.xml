@@ -35,8 +35,8 @@
 	
 	<select id="loginUser" parameterType="UserVO" resultType="UserVO">
 	<![CDATA[
-		select no, id
-		from users where id=#{id} and password=#{password}
+		SELECT ID, USERNAME
+		FROM users where ID = #{id}	and password = 	#{password}
     ]]>
 	</select>
 	

@@ -15,7 +15,7 @@
 		<c:import url="/WEB-INF/views/includes/main-header.jsp"></c:import>
 		
 		<div id="loginForm">
-			<form method="post" action="${pageContext.request.contextPath}/user/login">
+			<form method="post" action="${pageContext.request.contextPath}/user/loginSuccess">
 	      		<table>
 			      	<colgroup>
 						<col style="width: 100px;">

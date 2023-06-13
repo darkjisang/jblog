@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +22,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/joinForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
-		System.out.println("UserController.joinForm");
 		return "user/joinForm";
 	}
 	
@@ -36,19 +37,39 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login() {
-		System.out.println("UserController.login");
 		return "user/loginForm";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/idCheck", method = {RequestMethod.GET, RequestMethod.POST})
 	public JsonResult idCheck(@RequestParam("id") String id) {
-		System.out.println("UserController.idCheck");
 		JsonResult js = new JsonResult();
 		boolean data = service.getIdCheck(id);
 		js.success(data);
 		return js;
 	}
 	
+	@RequestMapping(value = "/loginSuccess", method = {RequestMethod.GET, RequestMethod.POST})
+	public String loginSuccess(@ModelAttribute UserVO vo, HttpSession session) {
+		System.out.println("UserController.loginSuccess");
+		System.out.println("vo : " + vo);
+		UserVO userVO = service.getLoginUser(vo); 
+		System.out.println("userVO : " + userVO);
+		if(userVO != null) {
+			System.out.println("LoginSuccess");
+			session.setAttribute("user", userVO);
+			return "redirect:/";
+		}else {
+			System.out.println("LoginFail");
+			return "redirect:/user/login";
+		}
+	}
+	
+	@RequestMapping(value = "/logOut")
+	public String logOut(HttpSession session) {
+		session.removeAttribute("user");
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }
