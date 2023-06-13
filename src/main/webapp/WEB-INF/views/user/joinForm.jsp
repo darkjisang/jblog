@@ -12,10 +12,8 @@
 </head>
 <body>
 	<div id="center-content">
-		
 		<!-- 메인 해더 -->
 		<c:import url="/WEB-INF/views/includes/main-header.jsp"></c:import>
-
 		<div>		
 			<form id="joinForm" method="post" action="${pageContext.request.contextPath}/user/join">
 				<table >
@@ -54,16 +52,12 @@
 	      		<div id="btnArea">
 					<button id="btnJoin" class="btn" type="submit" >회원가입</button>
 				</div>
-	      		
 			</form>
-			
 		</div>
 		<br><br>
 		<!-- 메인 푸터  자리-->
 		<c:import url="/WEB-INF/views/includes/main-footer.jsp"></c:import>
-		
 	</div>
-
 </body>
 
 <script type="text/javascript">
@@ -91,5 +85,37 @@ $("#btnJoin").on("click", function () {
 	}
 	return true;
 });
+
+$("#btnIdCheck").on("click", function() {
+	console.log("idCheck");
+	//ID SAVE
+	var id = $("#btnIdCheck").val();
+	//통신
+	$.ajax({
+		url : "${pageContext.request.contextPath}/user/idCheck",
+		type : "post",
+		/* contentType : "application/json", */
+		data : {
+			id : id
+		},
+		dataType : "json",
+		success : function(jsonResult) {
+			console.log(jsonResult);
+			if (jsonResult.result == 'success') {
+				if (jsonResult.data == true) {
+					$("#idCheckMsg").css("color", "blue").html(
+							id + " 사용가능");
+				} else {
+					$("#idCheckMsg").css("color", "red").html(
+							id + " 사용불가");
+				}
+			}
+			/*성공시 처리해야될 코드 작성*/
+		},
+		error : function(XHR, status, error) {
+		}
+	});
+	
+})
 </script>
 </html>

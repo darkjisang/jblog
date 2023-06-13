@@ -23,8 +23,23 @@ public class UserController {
 	
 	@RequestMapping(value = "/join", method = {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute UserVO vo) {
-		service.userInsert(vo);
+		if(service.userInsert(vo) > 0) {
+			System.out.println("회원가입 성공");
+		}else {
+			System.out.println("회원가입 실패");
+		}
 		return "user/joinSuccess";
 	}
-
+	
+	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+	public String login() {
+		System.out.println("UserController.login");
+		return "user/loginForm";
+	}
+	
+	@RequestMapping(value = "/idCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String idCheck() {
+		System.out.println("UserController.idCheck");
+		return "";
+	}
 }

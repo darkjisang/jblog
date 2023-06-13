@@ -11,9 +11,11 @@ public class UserService {
 	
 	@Autowired
 	private UserDAO dao;
-	public void userInsert(UserVO vo) {
-		System.out.println("UserService.userInsert");
-		System.out.println(vo);
-		dao.userInsert(vo);
+	public int userInsert(UserVO vo) {
+		if (dao.userInsert(vo) == 1 && dao.blogInsert(vo) == 1 && dao.categoryInsert(vo) == 1) {
+	        return 1;
+	    } else {
+	        return 0;
+	    }
 	}
 }

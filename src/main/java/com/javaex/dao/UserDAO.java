@@ -11,8 +11,13 @@ public class UserDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public void userInsert(UserVO vo) {
-		System.out.println("UserDAO.userInsert");
-		System.out.println(vo);
+	public int userInsert(UserVO vo) {
+		return sqlsession.insert("user.userInsert", vo);
+	}
+	public int blogInsert(UserVO vo) {
+		return sqlsession.insert("user.blogInsert", vo);
+	}
+	public int categoryInsert(UserVO vo) {
+		return sqlsession.insert("user.categoryInsert", vo);
 	}
 }
