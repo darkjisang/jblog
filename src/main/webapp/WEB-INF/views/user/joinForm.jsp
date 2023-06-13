@@ -24,21 +24,21 @@
 					</colgroup>
 		      		<tr>
 		      			<td><label for="txtId">아이디</label></td>
-		      			<td><input id="txtId" type="text" name="id" ></td>
+		      			<td><input id="txtId" type="text" name="id" placeholder="아이디를 입력하세요" required></td>
 		      			<td><button id="btnIdCheck" type="button">아이디체크</button></td>
 		      		</tr>
 		      		<tr>
 		      			<td></td>
-		      			<td id="tdMsg" colspan="2">사용할 수 있는 아이디 입니다.</td>
+		      			<td id="tdMsg" colspan="2" align="center"></td>
 		      		</tr> 
 		      		<tr>
 		      			<td><label for="txtPassword">패스워드</label> </td>
-		      			<td><input id="txtPassword" type="password" name="password"  value=""></td>   
+		      			<td><input id="txtPassword" type="password" name="password"  value="" placeholder="패스워드를 입력하세요"></td>   
 		      			<td></td>  			
 		      		</tr> 
 		      		<tr>
 		      			<td><label for="txtUserName">이름</label> </td>
-		      			<td><input id="txtUserName" type="text" name="userName"  value=""></td>   
+		      			<td><input id="txtUserName" type="text" name="userName"  value="" placeholder="이름을 입력하세요"></td>   
 		      			<td></td>  			
 		      		</tr>  
 		      		<tr>
@@ -87,9 +87,15 @@ $("#btnJoin").on("click", function () {
 });
 
 $("#btnIdCheck").on("click", function() {
-	console.log("idCheck");
 	//ID SAVE
-	var id = $("#btnIdCheck").val();
+	var id = $("#txtId").val();
+	//입력 null check
+	if(id === ""){
+		alert("아이디를 입력하시오.");
+		return false;
+	}
+	console.log("idCheck");
+	console.log(id);
 	//통신
 	$.ajax({
 		url : "${pageContext.request.contextPath}/user/idCheck",
@@ -103,11 +109,11 @@ $("#btnIdCheck").on("click", function() {
 			console.log(jsonResult);
 			if (jsonResult.result == 'success') {
 				if (jsonResult.data == true) {
-					$("#idCheckMsg").css("color", "blue").html(
-							id + " 사용가능");
-				} else {
-					$("#idCheckMsg").css("color", "red").html(
+					$("#tdMsg").css("color", "red").html(
 							id + " 사용불가");
+				} else {
+					$("#tdMsg").css("color", "blue").html(
+							id + " 사용가능");
 				}
 			}
 			/*성공시 처리해야될 코드 작성*/

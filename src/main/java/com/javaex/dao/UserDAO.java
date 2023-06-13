@@ -20,4 +20,8 @@ public class UserDAO {
 	public int categoryInsert(UserVO vo) {
 		return sqlsession.insert("user.categoryInsert", vo);
 	}
+	
+	public UserVO getIdCheck(String id) {
+		return sqlsession.selectOne("user.idCheck", id);
+	}
 }
