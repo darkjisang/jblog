@@ -18,17 +18,18 @@ public class BlogController {
 	BlogService service;
 	
 	@RequestMapping(value = "/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String blogMain(@PathVariable("id") String id, Model model) {
-		System.out.println("BlogController.blogMain");
-		System.out.println(id);
-		//model.addAttribute("", )
-		//model.addAttribute("model", )
+	public String blogMain(Model model, @PathVariable("id") String id) {
 		Map<String, Object> list = new HashMap<>();
 		list = service.getMainList(id);
 		System.out.println("list" + list);
 		model.addAttribute("list", list);
-
 		return "blog/blog-main";
+	}
+	
+	@RequestMapping(value = "/{id}/admin/basic")
+	public String myBlogAdmin() {
+		System.out.println("BlogController.myBlogAdmin");
+		return "blog/admin/blog-admin-basic";
 	}
 	
 }

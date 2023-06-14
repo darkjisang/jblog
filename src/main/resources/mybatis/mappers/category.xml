@@ -3,7 +3,7 @@
 
 <mapper namespace="category">
 
-	<select id="getMainList" parameterType="CategoryVO" resultType="CategoryVO">
+	<select id="getCategoryList" parameterType="String" resultType="CategoryVO">
 	<![CDATA[
 		select *
 		from category

@@ -14,16 +14,17 @@ import com.javaex.dao.PostDAO;
 public class BlogService {
 	@Autowired
 	private BlogDAO blogdao;
-//	@Autowired
-//	private CategoryDAO catedao;
-//	@Autowired
-//	private PostDAO postdao;
+	@Autowired
+	private CategoryDAO catedao;
+	@Autowired
+	private PostDAO postdao;
 	
 	public Map<String, Object>getMainList(String id){
 		System.out.println("BlogService.getMainList");
-		System.out.println(id);
 		Map<String, Object> list = new HashMap<>();
 		list.put("blog", blogdao.getBlog(id));
+		list.put("category", catedao.getCategory(id));
+		list.put("category", postdao.getPostList(id));
 		return list;
 	}
 	

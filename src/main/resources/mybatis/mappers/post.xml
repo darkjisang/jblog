@@ -3,11 +3,11 @@
 
 <mapper namespace="post">
 
-	<select id="getMainList" parameterType="PostVO" resultType="PostVO">
+	<select id="getPostList" parameterType="String" resultType="PostVO">
 	<![CDATA[
-		select *
-		from category
-		where id = #{id}
+		select p.postNo as postNo, c.cateNo as cateNo, p.postTilte as postTilte, p.postContent as postContent, p.regDate as regDate
+		from category c, post p
+		where c.cateno = p.cateno and id = #{id}
     ]]>
 	</select>
 

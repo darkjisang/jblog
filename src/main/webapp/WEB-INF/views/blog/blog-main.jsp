@@ -27,7 +27,7 @@
 					<%-- <img id="proImg" src=""> --%>
 					
 					<div id="nick">${user.userName}(${user.id})님</div>
-						<h2>${list.blog.id}</h2>
+						<h2>MAP에서 추출한 ID${list.blog.id}</h2> <!-- MAP에서 추출한 ID -->
 				</div>
 				<div id="cate">
 					<div class="text-left">

@@ -13,7 +13,6 @@ public class BlogDAO {
 	
 	public BlogVO getBlog(String id) {
 		System.out.println("BlogDAO.getBlog");
-		System.out.println(id);
 		return sqlsession.selectOne("blog.getBlog", id);
 	}
 }
