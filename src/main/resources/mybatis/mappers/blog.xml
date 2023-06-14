@@ -5,12 +5,19 @@
 
 	<select id="getBlog" parameterType="String" resultType="BlogVO">
 	<![CDATA[
-		select id, blogtitle as blogTitle, blogfile as blogFile
+		select id, blogTitle, blogFile
 		from blog
 		where id = #{id}
     ]]>
 	</select>
 
+	<update id="basicUpdate" parameterType="UserVO">
+	<![CDATA[
+		UPDATE blog SET blogFile = #{blogFile}, blogTitle = #{blogTitle}
+		where id = 'darkjisang'
+    ]]>
+	</update>
+	
 	<!-- 
 	<insert id="userInsert" parameterType="UserVO">
 	<![CDATA[
@@ -56,14 +63,5 @@
 	
 	
 	
-	<update id="userUpdate" parameterType="UserVO">
-	<![CDATA[
-		update users 
-		set password = #{password},
-		name = #{name},
-		gender = #{gender}
-		where id = #{id} and no = #{no}
-    ]]>
-	</update>
 	-->
 </mapper>

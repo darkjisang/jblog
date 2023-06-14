@@ -14,7 +14,7 @@
 	<insert id="blogInsert" parameterType="UserVO">
 	<![CDATA[
 		INSERT INTO blog (id, blogTitle)
-		VALUES (#{id}, #{userName})
+		VALUES (#{id}, #{userName} || '님의 블로그입니다.')
     ]]>
 	</insert>
 	

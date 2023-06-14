@@ -12,7 +12,11 @@ public class BlogDAO {
 	private SqlSession sqlsession;
 	
 	public BlogVO getBlog(String id) {
-		System.out.println("BlogDAO.getBlog");
 		return sqlsession.selectOne("blog.getBlog", id);
+	}
+	
+	public int basicUpdate(BlogVO vo) {
+		System.out.println("BlogDAO.basicUpdate");
+		return sqlsession.update("blog.basicUpdate", vo);
 	}
 }

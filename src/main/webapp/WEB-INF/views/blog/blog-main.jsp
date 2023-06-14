@@ -21,13 +21,11 @@
 				<div id="profile">
 					
 					<!-- 기본이미지 -->
-					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
-					
+					<img id="proImg" src="${pageContext.request.contextPath }/upload/${list.blog.blogFile}">
 					<!-- 사용자업로드 이미지 -->
 					<%-- <img id="proImg" src=""> --%>
 					
-					<div id="nick">${user.userName}(${user.id})님</div>
-						<h2>MAP에서 추출한 ID${list.blog.id}</h2> <!-- MAP에서 추출한 ID -->
+					<div id="nick">${user.userName}(${list.blog.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
