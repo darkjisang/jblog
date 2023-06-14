@@ -13,7 +13,6 @@
 
 <body>
 	<div id="wrap">
-
 		<!-- 개인블로그 해더 -->
 		<c:import url="/WEB-INF/views/includes/blog-header.jsp"></c:import>
 		
@@ -28,6 +27,7 @@
 					<%-- <img id="proImg" src=""> --%>
 					
 					<div id="nick">${user.userName}(${user.id})님</div>
+						<h2>${list.blog.id}</h2>
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -40,21 +40,18 @@
 						<li><a href="$}">카테고리2</a></li>
 						<li><a href="$}">카테고리1</a></li>
 						<li><a href="$}">미분류</a></li>
-						
 					</ul>
 				</div>
 			</div>
 			<!-- profilecate_area -->
 			
 			<div id="post_area">
-				
 				<div id="postBox" class="clearfix">
 						<div id="postTitle" class="text-left"><strong>08.페이징</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
 						<div id="postNick">${user.userName}(${user.id})님</div>
 				</div>
 				<!-- //postBox -->
-			
 				<div id="post" >
 					대통령은 법률이 정하는 바에 의하여 사면·감형 또는 복권을 명할 수 있다. 
 					대통령의 임기는 5년으로 하며, 중임할 수 없다. 법관은 탄핵 또는 금고 이상의 
@@ -70,7 +67,6 @@
 							<div id="postDate" class="text-left"><strong></strong></div>
 							<div id="postNick"></div>
 				</div>
-			    
 				<div id="post" >
 				</div>
 				-->
@@ -82,7 +78,6 @@
 							<col style="">
 							<col style="width: 20%;">
 						</colgroup>
-						
 						<tr>
 							<td class="text-left"><a href="">08.페이징</a></td>
 							<td class="text-right">2020/07/23</td>
@@ -104,21 +99,16 @@
 							<td class="text-right">2020/07/23</td>
 						</tr>
 						
-						
 					</table>
 				</div>
 				<!-- //list -->
 			</div>
 			<!-- //post_area -->
 			
-			
-			
 		</div>	
 		<!-- //content -->
 		<div class=></div>
 		<c:import url="/WEB-INF/views/includes/blog-footer.jsp"></c:import>
-		
-	
 	
 	</div>
 	<!-- //wrap -->

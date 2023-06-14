@@ -1,28 +1,24 @@
 package com.javaex.vo;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BlogVO {
-	private int id;
-	private String blogTitle, blogFile;
+	private String id, blogTitle, blogFile;
 	
 	public BlogVO() {
 		super();
 	}
 
-	public BlogVO(int id, String blogTitle, String blogFile) {
+	public BlogVO(String id, String blogTitle, String blogFile) {
 		super();
 		this.id = id;
 		this.blogTitle = blogTitle;
 		this.blogFile = blogFile;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

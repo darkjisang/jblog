@@ -1,19 +1,22 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.BlogVO;
+import com.javaex.vo.CategoryVO;
+import com.javaex.vo.PostVO;
 
 @Repository
-public class BlogDAO {
+public class PostDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public BlogVO getBlog(String id) {
-		System.out.println("BlogDAO.getBlog");
-		System.out.println(id);
-		return sqlsession.selectOne("blog.getBlog", id);
+	public List<PostVO> getMainList(PostVO vo){
+		List<PostVO> list = sqlsession.selectList("post.getMainList", vo);
+		return list;
 	}
+
 }

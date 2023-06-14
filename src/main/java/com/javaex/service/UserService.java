@@ -29,8 +29,6 @@ public class UserService {
 	}
 	
 	public UserVO getLoginUser(UserVO vo) {
-		System.out.println("UserService.getLoginUser");
-		System.out.println(vo);
 		return dao.getLoginUser(vo);
 	}
 }
