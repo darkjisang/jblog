@@ -26,11 +26,13 @@ public class BlogService {
 	@Autowired
 	private PostDAO postdao;
 	
+	private Map<String, Object>list = new HashMap<>();
+	
+	//전체 리스트(블로그 메인)
 	public Map<String, Object>getMainList(String id){
-		Map<String, Object> list = new HashMap<>();
 		list.put("blog", blogdao.getBlog(id));
-		list.put("category", catedao.getCategory(id));
-		list.put("category", postdao.getPostList(id));
+		list.put("category", catedao.getCategoryList(id));
+		list.put("post", postdao.getPostList(id));
 		return list;
 	}
 	
@@ -38,34 +40,32 @@ public class BlogService {
 		return blogdao.getBlog(id);
 	}
 	
+	public Map<String, Object> getCateAdmin(String id) {
+		list.put("blog", blogdao.getBlog(id));
+		list.put("category", catedao.getCategoryList(id));
+		return list;
+	}
+	
 	public int basicUpdate(BlogVO vo, MultipartFile file) {
 		String saveDir = "C:/javaStudy/fileupload/";
-		
-		System.out.println("BlogService.basicUpdate");
-		System.out.println(file);
 		
 		//vo.setBlogTitle(saveDir);
 		
 		if (!file.isEmpty()) {
 		// 오리지널파일
 		String orgName = file.getOriginalFilename();
-		System.out.println("orgName: " + orgName);
 		
 		// 확장자
 		String exName = orgName.substring(orgName.indexOf("."));
-		System.out.println("exName: " + exName);
 		
 		// 저장파일 이름(관리)
 		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
-		System.out.println("saveName: " + saveName);
 		
 		// 파일패스
 		String filePath = saveDir + saveName;
-		System.out.println("filePath: " + filePath);
 		
 		// 파일사이즈
-		long fileSize = file.getSize();
-		System.out.println("fileSize: " + fileSize);
+		//long fileSize = file.getSize();
 		
 		// 저장 경로 VO 저장
 		vo.setBlogFile(saveName);

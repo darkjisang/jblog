@@ -6,21 +6,40 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CategoryVO {
-	private int cateNo;
+	private int cateNo, postCnt, cateCnt;
 	private String id, cateName, description;
 	private Date regDate;
 	
 	public CategoryVO() {
 		super();
 	}
-
-	public CategoryVO(int cateNo, String id, String cateName, String description, Date regDate) {
+	
+	public CategoryVO(int cateNo, int postCnt, int cateCnt, String id, String cateName, String description,
+			Date regDate) {
 		super();
 		this.cateNo = cateNo;
+		this.postCnt = postCnt;
+		this.cateCnt = cateCnt;
 		this.id = id;
 		this.cateName = cateName;
 		this.description = description;
 		this.regDate = regDate;
+	}
+
+	public int getCateCnt() {
+		return cateCnt;
+	}
+
+	public void setCateCnt(int cateCnt) {
+		this.cateCnt = cateCnt;
+	}
+
+	public int getPostCnt() {
+		return postCnt;
+	}
+
+	public void setPostCnt(int postCnt) {
+		this.postCnt = postCnt;
 	}
 
 	public int getCateNo() {
@@ -65,7 +84,7 @@ public class CategoryVO {
 
 	@Override
 	public String toString() {
-		return "CategoryVO [cateNo=" + cateNo + ", id=" + id + ", cateName=" + cateName + ", description=" + description
-				+ ", regDate=" + regDate + "]";
+		return "CategoryVO [cateNo=" + cateNo + ", postCnt=" + postCnt + ", cateCnt=" + cateCnt + ", id=" + id
+				+ ", cateName=" + cateName + ", description=" + description + ", regDate=" + regDate + "]";
 	}
 }

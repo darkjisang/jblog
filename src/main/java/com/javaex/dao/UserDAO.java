@@ -26,8 +26,6 @@ public class UserDAO {
 	}
 	
 	public UserVO getLoginUser(UserVO vo) {
-		System.out.println("UserDAO.getLoginUser");
-		System.out.println(vo);
 		return sqlsession.selectOne("user.loginUser", vo);
 	}
 }

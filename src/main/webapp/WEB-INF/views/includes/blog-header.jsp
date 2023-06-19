@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 		<div id="header" class="clearfix">
-			<h1><a href="${pageContext.request.contextPath}/jblog/${myBlog.id}">${myBlog.blogTitle}</a></h1>
+		
+			<c:choose>
+	            <c:when test="${list.blog ne null}">
+	                <!-- 맵 형식인 경우 -->
+					<h1><a href="${pageContext.request.contextPath}/${list.blog.id}">${list.blog.blogTitle}</a></h1>
+	                
+	            </c:when>
+	            <c:otherwise>
+	                <!-- 객체 형식인 경우 -->
+					<h1><a href="${pageContext.request.contextPath}/${myBlog.id}">${myBlog.blogTitle}</a></h1>
+	                
+	            </c:otherwise>
+	        </c:choose>
+		
+		
 			<ul class="clearfix">
 				
 				<c:choose>

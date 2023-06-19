@@ -51,10 +51,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/loginSuccess", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginSuccess(@ModelAttribute UserVO vo, HttpSession session) {
-		System.out.println("UserController.loginSuccess");
-		System.out.println("vo : " + vo);
 		UserVO userVO = service.getLoginUser(vo); 
-		System.out.println("userVO : " + userVO);
 		if(userVO != null) {
 			System.out.println("LoginSuccess");
 			session.setAttribute("user", userVO);

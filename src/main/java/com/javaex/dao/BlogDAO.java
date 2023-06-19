@@ -16,7 +16,7 @@ public class BlogDAO {
 	}
 	
 	public int basicUpdate(BlogVO vo) {
-		System.out.println("BlogDAO.basicUpdate");
 		return sqlsession.update("blog.basicUpdate", vo);
 	}
+	
 }
